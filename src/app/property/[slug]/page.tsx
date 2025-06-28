@@ -7,6 +7,13 @@ import { mockProperties, propertyDetails } from "../../data/properties";
 import PropertyCard from "@/app/components/PropertyCard";
 import { BsWhatsapp } from "react-icons/bs";
 
+// Generate static params for all properties
+export async function generateStaticParams() {
+  return propertyDetails.map((property) => ({
+    slug: property.slug,
+  }));
+}
+
 export default function PropertyPage() {
   const { slug } = useParams<{ slug: string }>();
   const property = propertyDetails.find((p) => p.slug === slug);

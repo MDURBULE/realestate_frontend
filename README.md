@@ -135,13 +135,76 @@ The website is fully responsive with breakpoints:
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
+### Hostinger Deployment (Recommended for this project)
+
+This project is configured for static export and optimized for Hostinger hosting.
+
+#### Method 1: Local Build & Upload (Recommended)
+
+1. **Build the project locally**
+   ```bash
+   # Windows
+   build.bat
+   
+   # Linux/Mac
+   chmod +x build.sh
+   ./build.sh
+   
+   # Or manually
+   npm install
+   npm run build
+   ```
+
+2. **Upload to Hostinger**
+   - Upload the contents of the `out` folder to your Hostinger `public_html` directory
+   - Make sure the `.htaccess` file is in the root directory
+   - Set file permissions: 644 for files, 755 for directories
+
+#### Method 2: Build on Hostinger (if SSH access available)
+
+1. **Upload source code**
+   - Upload your entire project to a subdirectory (e.g., `src`)
+   - Don't upload `node_modules` or `.next` folders
+
+2. **SSH into Hostinger**
+   ```bash
+   cd public_html/src
+   npm install
+   npm run build
+   cp -r out/* ../public_html/
+   ```
+
+#### Environment Variables
+
+Set these in your Hostinger environment or update the code:
+- `NEXT_PUBLIC_BASE_URL`: Your actual domain (e.g., https://yourdomain.com)
+
+### Troubleshooting 403 Forbidden Errors
+
+If you encounter 403 Forbidden errors:
+
+1. **Check File Permissions**
+   - Files: 644
+   - Directories: 755
+   - `.htaccess`: 644
+
+2. **Verify .htaccess Location**
+   - Must be in the root directory (public_html)
+
+3. **Check Hostinger Settings**
+   - Ensure static hosting is enabled
+   - Verify domain/subdomain configuration
+
+4. **Clear Browser Cache**
+   - Hard refresh (Ctrl+F5) or clear cache
+
+5. **Check for Missing Files**
+   - Ensure all files from the `out` directory are uploaded
+   - Verify `index.html` exists in the root
 
 ### Other Platforms
-The project can be deployed to any platform that supports Next.js:
+The project can also be deployed to:
+- Vercel (Recommended for Next.js)
 - Netlify
 - AWS Amplify
 - DigitalOcean App Platform
