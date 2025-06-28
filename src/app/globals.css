@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .font-poppins {
+    font-family: var(--font-poppins), sans-serif;
+  }
+
+  .font-libre {
+    font-family: var(--font-libre-baskerville), serif;
+  }
+}
